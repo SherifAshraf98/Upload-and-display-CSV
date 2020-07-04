@@ -17,8 +17,8 @@ Website that is allows user to display csv file online, developed using these te
 * Drop any created database
 
 #### To Visit App:
-
-`https://serene-lassen-volcanic-19018.herokuapp.com/`  
+ 
+<a href="https://serene-lassen-volcanic-19018.herokuapp.com/">CSV Display Website</a>
 
 
 ## Installation and Setup Instructions
