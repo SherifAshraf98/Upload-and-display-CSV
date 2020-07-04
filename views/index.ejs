@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>CSV</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+  <!-- External CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <input type="hidden" name="showAlert" value="<%= showAlert %>">
+
+  <% if(showAlert === true){ %>
+  <div class="container alert-container">
+    <div class="alert alert-<%= alertState %>" role="alert">
+      <%= alertMessage %>
+    </div>
+  </div>
+  <% } %>
+  
+  <div class="container main-container">
+    <div class="header">
+      <h1>Display CSV Data</h1>
+    </div>
+
+    <div class="upper-container">
+      <div class="left-upper-container">
+
+        <form class="" action="/csv" method="post">
+          <div class="form-group">
+            <label class="label-block" for="fileSelect">Import CSV File</label>
+            <input id="fileSelect" type="file" class="form-control-file" accept=".csv" name="csv" required />
+            <button class="btn btn-primary import-btn" type="submit" name="button">IMPORT</button>
+          </div>
+        </form>
+        <form class="" action="/dropDatabase" method="post">
+          <div class="form-group">
+            <button class="btn btn-danger reset-btn" type="submit" name="button">Reset All</button>
+          </div>
+        </form>
+
+      </div>
+
+      <div class="right-upper-container">
+
+        <form class="" action="/initConnection" method="post">
+          <label for="username">DB Collection Username</label>
+          <input class="form-control" type="text" name="username" id="username" required>
+          <label for="password">DB Collection Password</label>
+          <input class="form-control" type="password" name="password" id="password" required>
+          <button class="btn btn-primary" type="submit" name="button">Initialize</button>
+        </form>
+      </div>
+    </div>
+
+    <input type="hidden" name="showData" value="<%= showData %>">
+
+    <div class="table-responsive-lg">
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">ClientDeal ID</th>
+            <th scope="col">Client ID</th>
+            <th scope="col">Client Name</th>
+            <th scope="col">Deal ID</th>
+            <th scope="col">Deal Name</th>
+            <th scope="col">Date</th>
+            <th scope="col">Accepted</th>
+            <th scope="col">Refused</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if(showData === true){ %>
+          <% for(var i=0 ; i<dataObjects.length ; i++){ %>
+          <tr>
+            <th><%= countIndex++ %></th>
+            <td><%= dataObjects[i].clientId %></td>
+            <td><%= dataObjects[i].clientName %></td>
+            <td><%= dataObjects[i].dealId %></td>
+            <td><%= dataObjects[i].dealName %></td>
+            <td><%= dataObjects[i].date %></td>
+            <td><%= dataObjects[i].accepted %></td>
+            <td><%= dataObjects[i].refused %></td>
+          </tr>
+          <% }} %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+.main-container{
+  background-color: #f9f6f7;
+  border-radius: 10px;
+  margin-top: 40px;
+}
+
+.alert-container {
+  height: 24px;
+  display: block;
+}
+.header{
+  text-align: center;
+  margin-top: 30px;
+}
+
+.upper-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  padding: 40px;
+}
+
+.left-upper-container .btn{
+  margin-top: 20px;
+}
+.left-upper-container .reset-btn{
+  display: block;
+  margin-top: 30px;
+}
+.right-upper-container .btn{
+  margin-top: 15px;
+}
+.table{
+  text-align: center;
+}
