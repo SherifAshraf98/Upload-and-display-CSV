@@ -100,9 +100,10 @@ app.post("/csv", function(req, res) {
         }, function(err) {
           if (err) {
             console.log(err);
+            res.render("index",{showAlert: true, alertState:'danger', alertMessage:'Error in uploading file'});
           } else {
             console.log("Added Succesfully");
-            // Fecth the data after storing it, to be displayed
+            // Fetch the data after storing it, to be displayed
             Connection.findOne({
               username: connectionUsername
             }, function(err, foundObject) {
@@ -115,12 +116,18 @@ app.post("/csv", function(req, res) {
                   alertState: "success",
                   alertMessage: "Data imported successfully"
                 });
+              } else {
+                res.render("index",{showAlert: true, alertState:'danger', alertMessage:'Error in uploading file'});
               }
             });
 
           }
         });
 
+      }).on ('error', (err) =>{
+        console.log(err.message);
+        console.log(err.stack);
+        res.render("index",{showAlert: true, alertState:'danger', alertMessage:'Error in uploading file'});
       });
   } else {
     // If no connection initialized, force user to Initialize
