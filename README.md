@@ -57,6 +57,6 @@ Clone down this repository. You will need `node` and `npm` installed globally on
 
 `localhost:3000`  
 
-## Project Screen Shot(s)
+## Project Screenshots
 #### Home page with results
 ![Home Page](https://i.ibb.co/ypfRBsj/CSV-Output.png)
