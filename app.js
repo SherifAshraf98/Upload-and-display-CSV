@@ -47,7 +47,6 @@ const connectionSchema = new mongoose.Schema({
 });
 const Connection = mongoose.model("Connection", connectionSchema);
 
-
 app.get("/", function(req, res) {
   // when first time to open the page
   if (redirectToHomeSource === "user") {
